@@ -1,0 +1,73 @@
+//Layla Mitchell
+import java.util.Scanner;
+
+public class DistanceConverter {
+
+	//Convert meters to kilometers
+	public static void showKilometers(double meters) {
+		double kilometers = meters * 0.001;
+		System.out.printf("%.2f meters = %.4f kilometers%n", meters, kilometers);
+	}
+	
+	//Convert meters to inches
+	public static void showInches(double meters) {
+		double inches = meters * 39.37;
+		System.out.printf("%.2f meters = %.2f inches%n", meters, inches);
+	}
+	
+	//Convert meters to feet
+	public static void showFeet(double meters) {
+		double feet = meters * 3.281;
+		System.out.printf("%.2f meters = %.2f feet%n", meters, feet);
+	}
+	
+	//Main method
+	@SuppressWarnings("resource")
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		double meters;
+		int choice;
+		
+		//Ask for distance in meters
+		System.out.print("Enter a distance in meters: ");
+		meters = input.nextDouble();
+		
+		//Input Validation
+		if (meters < 0) {
+			System.out.println("Error: Distance cannot be negative. Program exiting.");
+			return;
+		}
+		
+		//Menu loop
+		do {
+			System.out.println("\n--- Conversion Menu ---");
+			System.out.println("1. Convert to kilometers");
+			System.out.println("2. Convert to inches");
+			System.out.println("3. Convert to feet");
+			System.out.println("4. Quit the program");
+			System.out.println("Enter your choice (1-4): ");
+			
+			choice = input.nextInt();
+			
+			switch(choice) {
+				case 1:
+					showKilometers(meters);
+					break;
+				case 2:
+					showInches(meters);
+					break;
+				case 3:
+					showFeet(meters);
+					break;
+				case 4:
+					System.out.println("Exiting the program. Goodbye!");
+					break;
+				default:
+					System.out.println("Invalid choice. Please select 1-4.");
+			}
+			
+		} while (choice != 4);
+		
+		input.close();
+		}
+}
